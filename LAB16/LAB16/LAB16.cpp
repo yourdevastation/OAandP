@@ -518,6 +518,29 @@ void DestroyWallsTwoCells() {
     }
 }
 
+void doMidasHand(int i, int j)
+{
+    if (map[i][j] == 2)
+    {
+        map[i][j] = 3;
+        if (i > 0) doMidasHand(i - 1, j);
+        if (i < N - 1) doMidasHand(i + 1, j);
+        if (j > 0) doMidasHand(i, j - 1);
+        if (j < M - 1) doMidasHand(i, j + 1);
+    }
+}
+void midasHandToRight()
+{
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < M; j++)
+        {
+            if (map[i][j] == 1)
+                doMidasHand(i, j + 1);
+
+        }
+    }
+}
 
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -598,8 +621,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             DestroyWallsRight();
             InvalidateRect(hWnd, NULL, TRUE);
             break;
-        case 0x4F:
+        case 0x4F: //0
             DestroyWallsTwoCells();
+            InvalidateRect(hWnd, NULL, TRUE);
+            break;
+        case 0x4d: //M - MidasHand
+            midasHandToRight();
             InvalidateRect(hWnd, NULL, TRUE);
             break;
         }
