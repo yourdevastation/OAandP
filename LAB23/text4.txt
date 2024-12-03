@@ -1,0 +1,13 @@
+Nvidia
+If you're on Archcraft and install the provided package, There's nothing else you need to do in order to run it on Nvidia machine. When you install Archcraft on a machine that has Nvidia, It does all the operations (mentioned below) required to run a wayland compositor on such machines. The compositor should work fine.
+
+If you're running any other distribution and want to install this setup on your Nvidia machine, You need to do some tweaking. In this guide, I'm assuing you're using Arch Linux. Follow the steps below to make this wayland compositor work on Nvidia :
+
+Install Nvidia Dhyprs on your system. NVIDIA
+Edit /etc/mkinitcpio.conf file and add nvidia kernel modules
+MODULES="nvidia nvidia_modeset nvidia_uvm nvidia_drm"
+
+In the same file, Remove kms hook from hooks array if present.
+Rebuild your initrd file with : sudo mkinitcpio -P linux
+Edit /etc/default/grub file and add nvidia_drm.modeset=1 kernel parameter for Nvidia
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash nvidia_drm.modeset=1 ..."

@@ -569,6 +569,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
             // TODO: Добавьте сюда любой код прорисовки, использующий HDC...
+            char strC[80];
+            sprintf(strC, "steps = %d gold = %d", steps, gold);
+
+            TCHAR strWin[80];
+            OemToChar(strC, strWin);
+
+            static HFONT hFont = NULL;
+            if (hFont == NULL) {
+               hFont = CreateFont(HEIGHT, 0, 0, 0, 0, 0, 0, 0,
+                    DEFAULT_CHARSET, 0, 0, 0, 0, L"Courier New");
+            }
+            SelectObject(hdc, hFont);
+            SetTextColor(hdc, RGB(0, 0, 255));
+            TextOut(hdc, 10, HEIGHT * N, (LPCWSTR)strWin, _tcslen(strWin));
 
             drawMap(hdc);
 

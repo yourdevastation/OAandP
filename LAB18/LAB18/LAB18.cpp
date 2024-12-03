@@ -1,6 +1,7 @@
 ﻿// LAB18.cpp : Определяет точку входа для приложения.
 //
-
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
 #include "framework.h"
 #include "LAB18.h"
 
@@ -122,6 +123,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 //
 int numImage = 0;
+int counter = 0;
 void triangle(HDC hdc, int cx, int cy, int size) 
 {
     static HPEN hPen = NULL;
@@ -133,9 +135,16 @@ void triangle(HDC hdc, int cx, int cy, int size)
     LineTo(hdc, cx + size, cy - size);
     LineTo(hdc, cx - size, cy - size);
     LineTo(hdc, cx, cy + size);
+
+    char strC[5];
+    sprintf(strC, "%d", counter);
+    TCHAR strWin[5];
+    OemToChar(strC, strWin);
+    TextOut(hdc, cx, cy, (LPCWSTR)strWin, _tcslen(strWin));
 }
 void recursiveImage1_1(HDC hdc, int cx, int cy, int size)
 {
+    counter++;
     triangle(hdc, cx, cy, size);
     if (size > 10) {
         recursiveImage1_1(hdc, cx - size, cy - size, size / 2);
@@ -146,6 +155,7 @@ void recursiveImage1_1(HDC hdc, int cx, int cy, int size)
 }
 void recursiveImage1_2(HDC hdc, int cx, int cy, int size)
 {
+    counter++;
     triangle(hdc, cx, cy, size);
     if (size > 10) {
         recursiveImage1_2(hdc, cx - size, cy - size, size / 2);
@@ -156,6 +166,7 @@ void recursiveImage1_2(HDC hdc, int cx, int cy, int size)
 }
 void recursiveImage1_3(HDC hdc, int cx, int cy, int size)
 {
+    counter++;
     triangle(hdc, cx, cy, size);
     if (size > 10) {
         recursiveImage1_3(hdc, cx - size, cy - size, size / 2);
@@ -176,9 +187,15 @@ void sandglass(HDC hdc, int cx, int cy, int size)
     LineTo(hdc, cx - size, cy + size);
     LineTo(hdc, cx + size, cy + size);
     LineTo(hdc, cx - size / 2, cy - size);
+    char strC[5];
+    sprintf(strC, "%d", counter);
+    TCHAR strWin[5];
+    OemToChar(strC, strWin);
+    TextOut(hdc, cx, cy, (LPCWSTR)strWin, _tcslen(strWin));
 }
 void recursiveImage2_1(HDC hdc, int cx, int cy, int size)
 {
+    counter++;
     sandglass(hdc, cx, cy, size);
     if (size < 5) {
         return;
@@ -187,6 +204,7 @@ void recursiveImage2_1(HDC hdc, int cx, int cy, int size)
 }
 void recursiveImage2_2(HDC hdc, int cx, int cy, int size)
 {
+    counter++;
     sandglass(hdc, cx, cy, size);
     if (size < 5) {
         return;
@@ -195,6 +213,7 @@ void recursiveImage2_2(HDC hdc, int cx, int cy, int size)
 }
 void recursiveImage2_3(HDC hdc, int cx, int cy, int size)
 {
+    counter++;
     sandglass(hdc, cx, cy, size);
     if (size < 5) {
         return;
@@ -204,6 +223,7 @@ void recursiveImage2_3(HDC hdc, int cx, int cy, int size)
 }
 void recursiveImage2_4(HDC hdc, int cx, int cy, int size)
 {
+    counter++;
     sandglass(hdc, cx, cy, size);
     if (size < 15) {
         return;
@@ -226,9 +246,16 @@ void rhomb(HDC hdc, int cx, int cy, int size)
     LineTo(hdc, cx, cy + size);
     LineTo(hdc, cx + size, cy);
     LineTo(hdc, cx, cy - size);
+
+    char strC[5];
+    sprintf(strC, "%d", counter);
+    TCHAR strWin[5];
+    OemToChar(strC, strWin);
+    TextOut(hdc, cx, cy, (LPCWSTR)strWin, _tcslen(strWin));
 }
 void recursiveImage3_1(HDC hdc, int cx, int cy, int size)
 {
+    counter++;
     rhomb(hdc, cx, cy, size);
     if (size < 15) {
         return;
@@ -237,6 +264,7 @@ void recursiveImage3_1(HDC hdc, int cx, int cy, int size)
 }
 void recursiveImage3_2(HDC hdc, int cx, int cy, int size)
 {
+    counter++;
     rhomb(hdc, cx, cy, size);
     if (size < 15) {
         return;
@@ -246,6 +274,7 @@ void recursiveImage3_2(HDC hdc, int cx, int cy, int size)
 }
 void recursiveImage3_3(HDC hdc, int cx, int cy, int size)
 {
+    counter++;
     rhomb(hdc, cx, cy, size);
     if (size < 15) {
         return;
@@ -256,6 +285,7 @@ void recursiveImage3_3(HDC hdc, int cx, int cy, int size)
 }
 void recursiveImage3_4(HDC hdc, int cx, int cy, int size)
 {
+    counter++;
     rhomb(hdc, cx, cy, size);
     if (size < 15) {
         return;
@@ -266,6 +296,7 @@ void recursiveImage3_4(HDC hdc, int cx, int cy, int size)
 }
 void recursiveImage3_5(HDC hdc, int cx, int cy, int size)
 {
+    counter++;
     rhomb(hdc, cx, cy, size);
     if (size < 15) {
         return;
@@ -293,9 +324,15 @@ void star(HDC hdc, int cx, int cy, int size)
     LineTo(hdc, cx - size, cy);
     LineTo(hdc, cx - size / 4, cy - size / 4);
 
+    char strC[5];
+    sprintf(strC, "%d", counter);
+    TCHAR strWin[5];
+    OemToChar(strC, strWin);
+    TextOut(hdc, cx, cy, (LPCWSTR)strWin, _tcslen(strWin));
 }
 void recursiveImage4_1(HDC hdc, int cx, int cy, int size)
 {
+    counter++;
     star(hdc, cx, cy, size);
     if (size < 15) {
         return;
@@ -304,6 +341,7 @@ void recursiveImage4_1(HDC hdc, int cx, int cy, int size)
 }
 void recursiveImage4_2(HDC hdc, int cx, int cy, int size)
 {
+    counter++;
     star(hdc, cx, cy, size);
     if (size < 15) {
         return;
@@ -313,6 +351,7 @@ void recursiveImage4_2(HDC hdc, int cx, int cy, int size)
 }
 void recursiveImage4_3(HDC hdc, int cx, int cy, int size)
 {
+    counter++;
     star(hdc, cx, cy, size);
     if (size < 15) {
         return;
@@ -322,6 +361,7 @@ void recursiveImage4_3(HDC hdc, int cx, int cy, int size)
 }
 void recursiveImage4_4(HDC hdc, int cx, int cy, int size)
 {
+    counter++;
     star(hdc, cx, cy, size);
     if (size < 15) {
         return;
@@ -343,9 +383,16 @@ void arrow(HDC hdc, int cx, int cy, int size)
     LineTo(hdc, cx - size, cy);
     LineTo(hdc, cx, cy);
     LineTo(hdc, cx, cy + size);
+
+    char strC[5];
+    sprintf(strC, "%d", counter);
+    TCHAR strWin[5];
+    OemToChar(strC, strWin);
+    TextOut(hdc, cx, cy, (LPCWSTR)strWin, _tcslen(strWin));
 }
 void recursiveImage5_1(HDC hdc, int cx, int cy, int size)
 {
+    counter++;
     arrow(hdc, cx, cy, size);
     if (size < 60) {
         return;
@@ -355,6 +402,7 @@ void recursiveImage5_1(HDC hdc, int cx, int cy, int size)
 }
 void recursiveImage5_2(HDC hdc, int cx, int cy, int size)
 {
+    counter++;
     arrow(hdc, cx, cy, size);
     if (size < 15) {
         return;
@@ -389,7 +437,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
             // TODO: Добавьте сюда любой код прорисовки, использующий HDC...
-
+            counter = 0;
             if (numImage == 0)
                 recursiveImage1_1(hdc, 200, 200, 80);
             if (numImage == 1)

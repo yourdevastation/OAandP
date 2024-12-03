@@ -1,0 +1,18 @@
+Overview
+The Prisma Schema (or schema for short) is the main method of configuration for your Prisma ORM setup. It consists of the following parts:
+
+Data sources: Specify the details of the data sources Prisma ORM should connect to (e.g. a PostgreSQL database)
+Generators: Specifies what clients should be generated based on the data model (e.g. Prisma Client)
+Data model definition: Specifies your application models (the shape of the data per data source) and their relations
+It is typically a single file called schema.prisma (or multiple files with .prisma file extension) that is stored in a defined but customizable location.
+
+note
+Looking to split your schema into multiple files? Multi-file Prisma Schema is supported via the prismaSchemaFolder preview feature in Prisma ORM 5.15.0 and later.
+
+See the Prisma schema API reference for detailed information about each section of the schema.
+
+Whenever a prisma command is invoked, the CLI typically reads some information from the schema, e.g.:
+
+prisma generate: Reads all above mentioned information from the Prisma schema to generate the correct data source client code (e.g. Prisma Client).
+prisma migrate dev: Reads the data sources and data model definition to create a new migration.
+You can also use environment variables inside the schema to provide configuration options when a CLI command is invoked.
